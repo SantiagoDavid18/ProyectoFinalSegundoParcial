@@ -1,0 +1,40 @@
+package api_rest.dto;
+
+import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class LibroDTO {
+
+//Atributos del Padre
+@NotBlank(message = "El título es campo obligatorio")
+private String titulo;
+
+    @Min(value = 1990, message = "El año debe ser mayor a 1990")
+    @Max(value = 2035, message = "El año debe ser menor al 2035")
+    private int anioPublicacion;
+
+    @NotBlank(message = "La editorial es un campo obligatorio")
+    private String editorial;
+
+    @NotBlank(message = "El ISBN es campo obligatorio")
+    private String isbn;
+
+    @NotBlank(message = "El resumen es campo obligatorio")
+    private String resumen;
+
+//Atributos propios del Libro
+
+    @NotBlank(message = "El genero es campo obligatorio")
+    private String genero;
+
+    @Positive(message = "El número de páginas debe ser positivo")
+    private int numeroPaginas;
+
+    @NotNull(message = "Se requiere el ID del autor")
+    private Long idAutor;
+}
